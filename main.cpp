@@ -279,7 +279,7 @@ auto main() -> int
 
         char             opt {};
         do {
-                std::cout << "(a)Add, (r)Remove, (e)Edit, (s)Search: ";
+                std::cout << "(a)Add, (r)Remove, (e)Edit, (s)Search, (c) Checkout: ";
                 // std::scanf(" %c", &opt);
                 std::cin >> opt;
 
@@ -300,7 +300,7 @@ auto main() -> int
                         std::cout << "Please Search for item: "
                                   << "\n";
                         auto pitem = search_item(items);
-                        std::cout << "Choose 'a' or 'r'"
+                        std::cout << "Choose 'a' to Add or 'r' to Remove"
                                   << "\n";
                         char opt {};
                         // get input from user for opt
@@ -315,6 +315,8 @@ auto main() -> int
                         {
                                 items.erase(pitem);
                                 std::for_each(items.begin(), items.end(), [&](const Item& item) { std::cout << pitem->name << '\n'; });
+                                std::cout<<"--------------\n";
+                                std::cout<<"Item Erased\n";
                         }
                    
                 }
@@ -328,6 +330,14 @@ auto main() -> int
                                 std::cout<<"Item Erased\n";
                 }
 
+                else if (opt=='c')
+                {  
+                         std::cout<<"******************\n";
+                        std::cout<<"Thansks for Shopping with us !!\n";
+                        break;
+
+
+                }
                 else
                 {
                         std::cout << "Invalid option selected. Please try again." << '\n';
