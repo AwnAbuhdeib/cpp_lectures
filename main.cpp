@@ -257,8 +257,7 @@ auto search_item(const Inventory::Items& items)
                         std::cout << "Enter product name: ";
                         std::cin >> name;
 
-                        return std::find_if(items.begin(), items.end(),
-                                            [&](const Item& item) { return item.name == name; });        
+                        return std::find_if(items.begin(), items.end(), [&](const Item& item) { return item.name == name; });
                 }
                 else if (option == 'p')
                 {
@@ -304,7 +303,7 @@ auto main() -> int
                                   << "\n";
                         char opt {};
                         // get input from user for opt
-                        std::cin>>opt;
+                        std::cin >> opt;
                         if (opt == 'a')
                         {
                                 const auto add_item = get_product_details();
@@ -315,28 +314,25 @@ auto main() -> int
                         {
                                 items.erase(pitem);
                                 std::for_each(items.begin(), items.end(), [&](const Item& item) { std::cout << pitem->name << '\n'; });
-                                std::cout<<"--------------\n";
-                                std::cout<<"Item Erased\n";
+                                std::cout << "--------------\n";
+                                std::cout << "Item Erased\n";
                         }
-                   
                 }
-                else if (opt=='r')
+                else if (opt == 'r')
                 {
-                                std::cout<<"Please search for the item that you would like to remove!!\n"
-                                <<"-------------------\n";
-                                auto pitem=search_item(items);
-                                items.erase(pitem);
-                                std::for_each(items.begin(), items.end(), [&](const Item& item) { std::cout << pitem->name << '\n'; });
-                                std::cout<<"Item Erased\n";
+                        std::cout << "Please search for the item that you would like to remove!!\n"
+                                  << "-------------------\n";
+                        auto pitem = search_item(items);
+                        items.erase(pitem);
+                        std::for_each(items.begin(), items.end(), [&](const Item& item) { std::cout << pitem->name << '\n'; });
+                        std::cout << "Item Erased\n";
                 }
 
-                else if (opt=='c')
-                {  
-                         std::cout<<"******************\n";
-                        std::cout<<"Thansks for Shopping with us !!\n";
+                else if (opt == 'c')
+                {
+                        std::cout << "******************\n";
+                        std::cout << "Thansks for Shopping with us !!\n";
                         break;
-
-
                 }
                 else
                 {
