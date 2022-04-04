@@ -229,18 +229,7 @@ auto get_product_details()
         } while (true);
 }
 
-// using Items = std::vector<Item>;
 
-// auto Add_item_option()
-// {
-//         Item item {};
-// do{
-//         list_products();
-//         int Product_num;
-//         auto get_product_details()
-
-// }
-// }
 
 auto search_item(const Inventory::Items& items)
 {
@@ -342,6 +331,11 @@ auto main() -> int
                 }
         } while (true);
 }
+
+
+
+// i left all the commented lines, to show all the ways that i tried to create this program.
+
 
 // enum class Brands
 //  {
