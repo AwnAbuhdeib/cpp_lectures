@@ -334,7 +334,7 @@ auto main() -> int
 
 
 
-// i left all the commented lines, to show all the ways that i tried to create this program.
+// i left all the commented lines, to show all the ways that i tried to create this program..
 
 
 // enum class Brands
