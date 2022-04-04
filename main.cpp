@@ -135,7 +135,7 @@ struct Inventory
 
         auto add(const Item& item) { items.emplace_back(item); }
 
-        auto remove(ItemPtr pitem) { items.erase(pitem); }
+        //auto remove(ItemPtr pitem) { items.erase(pitem); }
 
         auto search(const SearchPredicate& pred) -> ItemPtr
         {
@@ -149,12 +149,12 @@ Inventory inventory;
 
 auto      Brand_product(Products p)
 {
-        return p > Products::productsStart && p < Products::productsEnd;        // why do we need 2 &
+        return p > Products::productsStart && p < Products::productsEnd;        
 }
 
-auto Brand_apple_product(Products p) { return p > Products::appleStart && p < Products::appleStop; }
-auto Brand_samsung_product(Products p) { return p > Products::samsungStart && p < Products::samsungStop; }
-auto Brand_huwaei_product(Products p) { return p > Products::huaweiStart && p < Products::huaweiStop; }
+// auto Brand_apple_product(Products p) { return p > Products::appleStart && p < Products::appleStop; }
+// auto Brand_samsung_product(Products p) { return p > Products::samsungStart && p < Products::samsungStop; }
+// auto Brand_huwaei_product(Products p) { return p > Products::huaweiStart && p < Products::huaweiStop; }
 
 auto edit_Item_Product(const Inventory::Items& items)
 {
@@ -188,12 +188,7 @@ auto edit_Item_Product(const Inventory::Items& items)
         } while (true);
 }
 
-// auto remove_product()
-//{
 
-// std::for_each(items.begin(), items.end(), [](const auto& n) { std::cout << pitem->name << '\n'; });
-// print items in nums
-//  }
 
 auto get_product_details()
 {
