@@ -95,10 +95,11 @@ constexpr std::string_view PRODUCT_NAMES[static_cast<int>(Products::Count)] = {
 // };
 
 constexpr auto is_valid_product(Products prod) { return prod > Products::Invalid && prod < Products::Count; }
-
 constexpr auto get_product_name(Products prod)
 {
+        
         if (!is_valid_product(prod)) { return std::string_view {""}; }
+
 
         return PRODUCT_NAMES[static_cast<int>(prod)];
 }
@@ -123,6 +124,8 @@ struct Item
         Item() = default;
         Item(Products p, int num_stock, float price, std::string_view name) : product {p}, stock {num_stock}, price {price}, name {name} {}
 };
+
+
 struct Inventory
 {
         using SearchPredicate = std::function<bool(const Item&)>;
@@ -181,9 +184,10 @@ auto edit_Item_Product(const Inventory::Items& items)
                         std::scanf("%d", &prod);
                         std::printf("Selected product category: %s\n", get_product_name(prod).data());
                         pitem = inventory.search([&](const Item& item) { return item.product == prod; });
+                return items.end();
                 }
 
-                return items.end();
+                
 
         } while (true);
 }
@@ -192,12 +196,12 @@ auto edit_Item_Product(const Inventory::Items& items)
 
 auto get_product_details()
 {
-        Item item {};
+        Item item{};
 
         int  product_id {};
         do {
                 list_products();
-                std::cout << "Select Product category"
+                std::cout << "Select Product id"
                           << "\n";
                 int Product_num {};
                 std::scanf("%d", &item);
@@ -240,6 +244,7 @@ auto get_product_details()
 
 auto search_item(const Inventory::Items& items)
 {
+        Item item {};
         do {
                 char option {};
                 std::cout << "(n)Search by Name, (p)Search by Product Id: ";
@@ -250,7 +255,9 @@ auto search_item(const Inventory::Items& items)
                         list_products();
                         std::string name {};
                         std::cout << "Enter product name: ";
-                        std::cin >> name;
+                        std::getline(std::cin >> std::ws, item.name);
+                        //std::cin >> name;
+
 
                         return std::find_if(items.begin(), items.end(), [&](const Item& item) { return item.name == name; });
                 }
@@ -297,7 +304,6 @@ auto main() -> int
                         std::cout << "Choose 'a' to Add or 'r' to Remove"
                                   << "\n";
                         char opt {};
-                        // get input from user for opt
                         std::cin >> opt;
                         if (opt == 'a')
                         {
@@ -326,7 +332,7 @@ auto main() -> int
                 else if (opt == 'c')
                 {
                         std::cout << "******************\n";
-                        std::cout << "Thansks for Shopping with us !!\n";
+                        std::cout << "The Program Know Is Terminated\nThank You !!\n";
                         break;
                 }
                 else
